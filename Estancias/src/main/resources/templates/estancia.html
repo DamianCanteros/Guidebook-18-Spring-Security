@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/fragments/head  :: head" ></head>
+<body>
+    <!-- Content -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Crear Casa -->
+                                <div class="p-5">
+                                    <form th:if="${casa != null}" action="@{/casa/registro}" method="POST">
+                                        <div class="text-center">
+                                            <h4 class="mb-4">Registrar estancia</h4>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-4">
+                                                <label class="form-label">Calle</label>
+                                                <input type="text" class="form-control" name="calle">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="form-label">Numero</label>
+                                                <input type="number" class="form-control" name="numero">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label class="form-label">Cod. Postal</label>
+                                                <input type="number" class="form-control" name="codPostal">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Ciudad</label>
+                                                <input type="text" class="form-control" name="ciudad">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label class="form-label">Pais</label>
+                                                <input type="text" class="form-control" name="pais">
+                                            </div>
+                                        </div>                                        
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label for="2" class="form-label">Desde</label>
+                                            <input type="date" class="form-control" name="fechaDesde">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label for="2" class="form-label">Hasta</label>
+                                            <input type="date" class="form-control" name="fechaHasta">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label for="2" class="form-label">Cant. Min. dias</label>
+                                            <input type="number" class="form-control" name="minDias">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label for="2" class="form-label">Cant. Max. dias</label>
+                                            <input type="number" class="form-control" name="maxDias">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="2" class="form-label">Precio</label>
+                                            <input type="number" class="form-control" name="precio">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="2" class="form-label">Tipo de vivienda</label>
+                                            <input type="text" class="form-control" name="tipoVivienda">
+                                        </div>                                        
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">Enviar</button>
+                                        <button type="reset" class="btn btn-primary btn-user btn-block">Borrar</button>
+                                    </form>
+                                <!-- Crear Estancia -->
+                                <div class="p-5">
+                                    <form th:if="${estancia != null}" action="@{/reserva/registro}" method="POST">
+                                        <div class="text-center">
+                                            <h4 class="mb-4">Reservar estancia</h4>
+                                        </div>                                  
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <label for="2" class="form-label">Desde</label>
+                                            <input type="date" class="form-control" name="fechaDesde">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label for="2" class="form-label">Hasta</label>
+                                            <input type="date" class="form-control" name="fechaHasta">
+                                            </div>
+                                        </div>
+                                        <input hidden th:value="${session.usuariosession.alias}">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">Enviar</button>
+                                        <button type="reset" class="btn btn-primary btn-user btn-block">Borrar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Footer -->
+    <footer th:replace="/fragments/footer  :: footer" ></footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>
+

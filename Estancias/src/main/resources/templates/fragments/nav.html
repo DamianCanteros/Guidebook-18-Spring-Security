@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" th:if="${session.usuariosession != null}" href="/estancia/inicio">Estancias</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto">
+        <div class="topbar-divider d-none d-sm-block"></div>
+        <!-- Nav Item - User Information -->
+        <li th:if="${session.usuariosession != null}" class="nav-item dropdown">
+          <a class="navbar-brand"><img class="img-profile rounded-circle" src="img/undraw_profile.svg"></a>
+          <a class="navbar-brand" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <p class="nav-link" th:if="${session.usuariosession != null}" th:text="${session.usuariosession.alias}"></p>
+          </a>
+            <!-- Dropdown - Logout -->
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <div th:if="${session.usuariosession.rol.toString() == 'FAMILIA'}" class="dropdown-item">
+                <a href="/familia/listar" class="dropdown-item">Mi perfil</a>
+              </div>
+              <div th:if="${session.usuariosession.rol.toString() == 'CLIENTE'}" class="dropdown-item">
+                <a href="/cliente/listar" class="dropdown-item">Mi perfil</a>
+              </div>
+              <div th:if="${session.usuariosession.rol.toString() == 'FAMILIA'}" class="dropdown-item">
+                <a href="/estancia/listar" class="dropdown-item" >Mi estancia</a>
+              </div>
+              <div th:if="${session.usuariosession.rol.toString() == 'CLIENTE'}" class="dropdown-item">
+                <a href="/reserva/listar" class="dropdown-item" >Mi reserva</a>
+              </div>
+              <div class="dropdown-item">
+                <a href="/logout" class="dropdown-item" >Cerrar Sesion</a>
+              </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:if="${session.usuariosession == null}" href="/usuario/login">Ingresar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:if="${session.usuariosession == null}" href="/usuario/registrar">Registrate</a>
+        </li>
+    </ul>
+  </div>
+</nav>

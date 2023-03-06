@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="/fragments/head  :: head" ></head>
+<body>
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <!-- Login -->
+                                <div class="p-5">
+                                    <form th:if="${registrar == null}" th:action= "@{/logincheck}" method="POST">
+                                        <div class="text-center">
+                                            <h4 class="mb-4">Iniciar Sesion</h4>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="name" class="form-control" name="nombreUsuario" placeholder="Nombre de usuario...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" name="password" placeholder="Password">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Ingresar
+                                        </button>
+                                        <hr>
+                                        <div class="text-center">
+                                            <a class="small" href="/portal/registrar">Crear una cuenta</a>
+                                        </div>
+                                    </form>
+                                    <!-- Register -->
+                                    <form th:if="${registrar != null}" th:action="@{/portal/registro}" method="POST">
+                                        <div class="text-center">
+                                            <h4 class="mb-4">Registrarse</h4>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="name" class="form-control" name="nombreUsuario" placeholder="Nombre de usuario...">
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="password" class="form-control" name="password2" placeholder="Repita la contraseña">
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Enviar
+                                        </button>
+                                        <hr>
+                                        <div class="text-center">
+                                            <a class="small" href="/portal/login">Ya tengo una cuenta</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>
